@@ -10,12 +10,13 @@ public class Main {
         System.out.println("Podaj Id kraju");
         String id = input1.nextLine();
 
+
         try {
             Map<String, Country> stringCountryMap = downloadCountry("country.csv");
             Country country = stringCountryMap.get(id);
-            if (stringCountryMap.get(id).equals(downloadCountry(id))) {
+
                 System.out.println(country);
-            }
+
         } catch (FileNotFoundException e) {
             System.out.println("Nie ma takiego pliku");
         }
@@ -24,8 +25,11 @@ public class Main {
 
     static Map<String, Country> downloadCountry(String s) throws FileNotFoundException {
         Map<String, Country> countryMap = new TreeMap<>();
-        File file = new File("country.csv");
+        File file = new File(s);
         Scanner input = new Scanner(file);
+
+
+
         while (input.hasNextLine()) {
             String line = input.nextLine();
             String[] split = line.split(";");
