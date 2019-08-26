@@ -14,20 +14,20 @@ public class Main {
         try {
             Map<String, Country> stringCountryMap = downloadCountry("country.csv");
             Country country = stringCountryMap.get(id);
-
+            if (country != null) {
                 System.out.println(country);
-
+            } else {
+                System.out.println("Nieprawidłowy kod");
+            }
         } catch (FileNotFoundException e) {
             System.out.println("Nie ma takiego pliku");
         }
-
     }
 
     static Map<String, Country> downloadCountry(String s) throws FileNotFoundException {
         Map<String, Country> countryMap = new TreeMap<>();
         File file = new File(s);
         Scanner input = new Scanner(file);
-
 
 
         while (input.hasNextLine()) {
